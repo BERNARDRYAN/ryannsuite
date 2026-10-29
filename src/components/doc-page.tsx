@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/container";
+import { formatDate } from "@/lib/utils";
 
 /** Shell for long-form ecosystem pages (privacy, terms, support). */
 export function DocPage({
@@ -29,13 +30,4 @@ export function DocPage({
       <div className="prose-doc mt-10">{children}</div>
     </Container>
   );
-}
-
-function formatDate(iso: string) {
-  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  });
 }

@@ -31,4 +31,11 @@ Defaults I picked where the brief was open. Change any of them freely.
 
 - **No backend in this repo.** No `@supabase/*` packages, no keys, no `.env` files. Contact is a `mailto:` link.
 - **If a backend feature is ever added:** only the Supabase **public anon key** may be used client-side, behind Row Level Security. The **service-role key must never appear in this repo** or in any client bundle. Keep it in server-only environment variables on whatever runs server code.
-- **`public/_headers`** sets `nosniff`, `Referrer-Policy`, `X-Frame-Options: DENY` and a restrictive `Permissions-Policy`. A Content-Security-Policy was left out because the inline theme script and Next's inline bootstrap scripts would need hashes. Worth adding later.
+- **`public/_headers`** sets `nosniff`, `Referrer-Policy`, `X-Frame-Options: DENY`, a restrictive `Permissions-Policy`, and the CSP directives that only work as a header (`frame-ancestors`, `object-src`, `base-uri`).
+- **Strict CSP on each page, added by `scripts/add-csp.mjs` (postbuild).** A static export can't use nonces. Instead, each exported page gets a `<meta>` CSP listing SHA-256 hashes of exactly its own inline scripts (Next's bootstrap scripts and the theme script). Injected and third-party scripts are blocked; I verified this in Chrome. One consequence: any analytics or third-party script added later needs its origin added to that script. `style-src` allows `'unsafe-inline'` because React style attributes need it.
+
+## Later additions
+
+- **Per-app share images** are generated at build by `src/app/apps/[slug]/opengraph-image.tsx`. They export without a file extension, so `_headers` sets `Content-Type: image/png` for them.
+- **Changelog** has only the real site-launch entry. App release history is left for you to fill in rather than invented.
+- **CI** (`.github/workflows/ci.yml`) runs lint, typecheck and build on pushes to `main` and on pull requests.

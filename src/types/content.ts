@@ -57,3 +57,12 @@ export interface SocialLink {
   /** `null` until known — the link is hidden. */
   href: string | null;
 }
+
+export interface ChangelogEntry {
+  /** ISO date, e.g. "2026-10-30". */
+  date: string;
+  /** A project slug, or `"suite"` for the RyannSuite site itself. */
+  app: string;
+  title: string;
+  description?: string;
+}

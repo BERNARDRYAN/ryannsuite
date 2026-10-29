@@ -9,6 +9,7 @@ const legalLinks = [
   { label: "Privacy", href: "/privacy/" },
   { label: "Terms", href: "/terms/" },
   { label: "Support", href: "/support/" },
+  { label: "Changelog", href: "/changelog/" },
 ];
 
 export function SiteFooter() {

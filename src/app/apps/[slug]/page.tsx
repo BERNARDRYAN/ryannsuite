@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Check, ImageIcon, ShieldCheck } from "lucide-react";
 import { getProject, projects } from "@/content/projects";
+import { sortedChangelog } from "@/content/changelog";
+import { ChangelogList } from "@/components/changelog-list";
 import { site } from "@/content/site";
 import { Container } from "@/components/ui/container";
 import { Badge, StatusBadge } from "@/components/ui/badge";
@@ -35,7 +37,12 @@ export async function generateMetadata({ params }: PageProps<"/apps/[slug]">): P
       url,
       title: project.name,
       description: project.description,
-      images: [{ url: "/og.png", width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.name,
+      description: project.description,
+      images: [`/apps/${project.slug}/opengraph-image`],
     },
   };
 }
@@ -44,6 +51,7 @@ export default async function AppPage({ params }: PageProps<"/apps/[slug]">) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
+  const updates = sortedChangelog(project.slug);
 
   return (
     <div data-accent={project.accent}>
@@ -150,6 +158,22 @@ export default async function AppPage({ params }: PageProps<"/apps/[slug]">) {
             ))}
           </ul>
         </section>
+
+        {updates.length > 0 && (
+          <section aria-labelledby="updates-heading" className="lg:col-span-2">
+            <div className="flex items-baseline justify-between gap-4">
+              <h2 id="updates-heading" className="text-2xl font-semibold tracking-tight">
+                Recent updates
+              </h2>
+              <Link href="/changelog/" className="text-sm font-medium text-accent-text hover:underline">
+                Full changelog
+              </Link>
+            </div>
+            <div className="mt-6">
+              <ChangelogList entries={updates.slice(0, 5)} showApp={false} />
+            </div>
+          </section>
+        )}
       </Container>
     </div>
   );

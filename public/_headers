@@ -4,7 +4,12 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: frame-ancestors 'none'; object-src 'none'; base-uri 'self'
 
 # Hashed build assets never change — cache for a year.
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Per-app share images are exported without a file extension.
+/apps/:slug/opengraph-image
+  Content-Type: image/png
