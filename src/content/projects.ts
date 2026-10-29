@@ -3,6 +3,9 @@ import type { Project } from "@/types/content";
 /**
  * The RyannSuite apps. To add an app, append one object here — routes, cards,
  * sitemap, JSON-LD and the support page all pick it up automatically.
+ *
+ * TODO: add real screenshots at public/projects/<slug>/screenshot-1.png (16:9) — missing files show placeholder frames.
+ * TODO: confirm each app's accent colour matches its own branding.
  */
 export const projects: Project[] = [
   {

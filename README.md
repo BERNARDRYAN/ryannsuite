@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RyannSuite
 
-## Getting Started
+The homepage of the **RyannSuite** app ecosystem (RyannPlan, RyannPace, RyannReceipt) and the portfolio/resume of **Bernard Ryan Sim**.
 
-First, run the development server:
+It is a fully static Next.js site (`output: "export"`) hosted free on Cloudflare Pages. There is no server runtime and no backend.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Stack:** Next.js 16 (App Router), TypeScript (strict), Tailwind CSS 4, Lucide React.
+
+## Project layout
+
+```
+src/
+  content/      ← all text, links and data (edit these)
+    site.ts         brand, email, domain, socials, nav
+    projects.ts     the apps in the suite
+    experience.ts   work + education
+    skills.ts       grouped skills
+  types/content.ts  types for the content files
+  components/   ← render-only UI (ui/ primitives, layout/, sections/)
+  app/          ← routes: /, /apps/[slug], /resume, /privacy, /terms, /support, 404, sitemap, robots, manifest
+public/         ← og.png, resume.pdf, _headers, _redirects, app screenshots
+scripts/        ← postbuild workaround (see NOTES.md)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Adding a new app
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Add one object to the `projects` array in [`src/content/projects.ts`](src/content/projects.ts). Nothing else needs to change. The home grid, `/apps/<slug>/` page, sitemap, JSON-LD, support page and hero all pick it up.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `accent` is one of `sky | orange | emerald | violet | rose | amber`.
+- `icon` is a key of `projectIcons` in [`src/components/icons.tsx`](src/components/icons.tsx). To use a different Lucide icon, add its import there.
+- Screenshots go in `public/projects/<slug>/` and are listed in `screenshots`. Missing files show a placeholder frame.
 
-## Learn More
+## Local development
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+nvm use            # Node 24 (see .nvmrc)
+npm install
+npm run dev        # http://localhost:3000
+npm run lint
+npm run typecheck  # next typegen + tsc --noEmit
+npm run build      # static export → out/
+npm start          # serve out/ locally (npx serve out)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploying to Cloudflare Pages ($0)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Cloudflare account: ryansim727@gmail.com
 
-## Deploy on Vercel
+1. Push this repo to GitHub.
+2. Open the Cloudflare dashboard, then go to **Workers & Pages → Create → Pages → Connect to Git** and pick the repo.
+3. Build settings:
+   - **Framework preset:** Next.js (Static HTML Export)
+   - **Build command:** `npm run build`
+   - **Build output directory:** `out`
+   - **Environment variable:** `NODE_VERSION` = `24` (match `.nvmrc`)
+4. Save and deploy. Every push to the production branch redeploys automatically.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Alternative (direct upload, no Git):**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npx wrangler pages deploy out --project-name ryannsuite
+```
+
+`public/_headers` (security headers + long cache for `/_next/static/*`) and `public/_redirects` are copied into `out/` and applied by Pages automatically.
+
+## Custom domain
+
+1. In Pages, go to **your project → Custom domains → Set up a custom domain**, enter the domain (e.g. `ryannsuite.com`) and follow the DNS steps. If the domain's DNS is already on Cloudflare, this is automatic.
+2. Update `url` in [`src/content/site.ts`](src/content/site.ts). It drives `metadataBase`, canonical URLs, Open Graph URLs, `sitemap.xml` and `robots.txt`.
+3. Optionally redirect the `*.pages.dev` address to the custom domain (see the example in `public/_redirects`), then rebuild and deploy.
+
+## Fill these in
+
+Collected from every `TODO:` in the codebase:
+
+**Links and identity**
+- [ ] Live URLs for RyannPlan, RyannPace and RyannReceipt: `liveUrl` in `src/content/projects.ts`
+- [ ] GitHub profile URL: `socials` in `src/content/site.ts`
+- [ ] LinkedIn profile URL: `socials` in `src/content/site.ts`
+- [ ] Custom domain: `url` in `src/content/site.ts` (see above), plus optional `public/_redirects`
+
+**Assets**
+- [ ] RyannSuite logo: replace `src/app/icon.svg`, `src/app/apple-icon.png`, `src/app/favicon.ico` and the text wordmark in `src/components/layout/site-header.tsx`
+- [ ] App screenshots: `public/projects/<slug>/screenshot-1.png` and `screenshot-2.png` (16:9)
+- [ ] OG image: `public/og.png` (1200×630). A generated placeholder is in place; replace it once there's a logo.
+- [ ] Real resume: `public/resume.pdf`
+
+**Content to confirm**
+- [ ] Each app's feature list and `stack` in `src/content/projects.ts`
+- [ ] Each app's accent colour matches its own branding: `src/content/projects.ts`
+- [ ] Skills: backend language/framework used at 7-Eleven, and the naming for Microsoft/Entra ID sign-in, in `src/content/skills.ts`
+- [ ] Support response time: `supportResponseTime` in `src/content/site.ts`
+- [ ] Apps are free: JSON-LD `offers` in `src/lib/structured-data.ts`
+
+**Legal**
+- [ ] Review `/privacy` (`src/app/privacy/page.tsx`). It is a template, not legal advice.
+- [ ] Review `/terms` (`src/app/terms/page.tsx`). It is a template, not legal advice.
+
+See [`NOTES.md`](NOTES.md) for the decisions made during the build.

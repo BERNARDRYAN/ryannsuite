@@ -11,7 +11,7 @@ export const site = {
     role: "Software engineer",
   },
   email: "ryannplan.app@gmail.com",
-  // TODO: replace with the custom domain once connected (also update public/_headers / README if needed).
+  // TODO: replace with the custom domain once connected (drives metadataBase, canonical URLs, sitemap, robots).
   url: "https://ryannsuite.pages.dev",
   // TODO: replace with the real resume PDF at public/resume.pdf.
   resumePdf: "/resume.pdf",
