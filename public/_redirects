@@ -1,0 +1,6 @@
+# Cloudflare Pages redirects — https://developers.cloudflare.com/pages/configuration/redirects/
+# Format: <from> <to> [status]
+#
+# TODO: add redirects as needed, e.g. once a custom domain is live:
+# https://ryannsuite.pages.dev/* https://<your-domain>/:splat 301
+# /plan https://<ryannplan-live-url> 302
