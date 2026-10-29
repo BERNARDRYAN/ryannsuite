@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getProject } from "@/content/projects";
 import { site } from "@/content/site";
 import type { ChangelogEntry } from "@/types/content";
-import { ProjectIcon } from "@/components/icons";
+import { AppLogo } from "@/components/app-logo";
 import { cn, formatDate } from "@/lib/utils";
 
 /** Timeline of changelog entries. `showApp` labels each entry with the app it belongs to. */
@@ -15,18 +15,18 @@ export function ChangelogList({ entries, showApp = true }: { entries: ChangelogE
           <li key={`${entry.date}-${entry.title}`} data-accent={project?.accent} className="relative pl-8">
             <span
               aria-hidden="true"
-              className={cn("absolute top-1.5 left-0 size-[11px] rounded-full border-2 border-background ring-1 ring-border", project ? "bg-accent" : "bg-primary")}
+              className={cn("absolute top-1.5 left-0 size-[11px] rounded-full border-2 border-background ring-1 ring-border", project ? "bg-accent" : "bg-signal")}
             />
             <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs tracking-wide text-muted-foreground uppercase">
               <time dateTime={entry.date}>{formatDate(entry.date)}</time>
               {showApp &&
                 (project ? (
                   <Link href={`/apps/${project.slug}/`} className="inline-flex items-center gap-1 text-accent-text hover:underline">
-                    <ProjectIcon name={project.icon} className="size-3.5" />
+                    <AppLogo project={project} className="size-4" />
                     {project.name}
                   </Link>
                 ) : (
-                  <span className="text-primary">{site.brand}</span>
+                  <span className="text-signal-text">{site.brand}</span>
                 ))}
             </p>
             <h3 className="mt-1 text-lg font-semibold tracking-tight">{entry.title}</h3>

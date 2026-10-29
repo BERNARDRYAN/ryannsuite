@@ -40,8 +40,8 @@ export default function PrivacyPage() {
           sign-in provider you choose.
         </li>
         <li>
-          <strong>Content you create</strong> — for example trips in RyannPlan, run details in RyannPace or expenses in
-          RyannReceipt.
+          <strong>Content you create</strong> — for example trips, expenses and payment-proof images in RyannPlan, saved
+          presets and posters in RyannPace, or backed-up receipts in RyannReceipt.
         </li>
         <li>
           <strong>Basic technical data</strong> — such as standard server logs kept by our hosting providers to keep the
@@ -49,10 +49,25 @@ export default function PrivacyPage() {
         </li>
       </ul>
 
-      <h2>How it&apos;s stored</h2>
+      <h2>Where it&apos;s kept, app by app</h2>
+      <ul>
+        <li>
+          <strong>RyannPlan</strong> needs an account. Trips, itineraries, expenses and uploaded payment proof are stored
+          in a Supabase database so everyone in your group can see them. AI travel recommendations use the trip details
+          you&apos;ve entered to generate suggestions. {/* TODO: name the AI provider used for recommendations. */}
+        </li>
+        <li>
+          <strong>RyannPace</strong> reads your activity files on your device; they are never uploaded. If you sign in,
+          your saved presets and poster gallery are stored with your account.
+        </li>
+        <li>
+          <strong>RyannReceipt</strong> works without an account and keeps receipts in your browser. If you sign in with
+          Google, they&apos;re backed up and synced across your devices.
+        </li>
+      </ul>
       <p>
-        The apps share one backend hosted on Supabase, which stores account and app data. The websites themselves are
-        served by Cloudflare. These providers process data on our behalf to run the service.
+        All apps are served by Cloudflare. Our hosting and database providers process data on our behalf only to run
+        the service.
       </p>
 
       <h2>What we don&apos;t do</h2>

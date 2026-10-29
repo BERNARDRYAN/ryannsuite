@@ -18,7 +18,7 @@ export function DocPage({
   return (
     <Container className="py-14 sm:py-20">
       <header className="max-w-2xl">
-        <p className="font-mono text-xs font-medium tracking-widest text-primary uppercase">{eyebrow}</p>
+        <p className="font-mono text-xs font-medium tracking-widest text-signal-text uppercase">{eyebrow}</p>
         <h1 className="mt-2 text-4xl font-semibold tracking-tight">{title}</h1>
         {lastUpdated && (
           <p className="mt-3 font-mono text-sm text-muted-foreground">

@@ -39,3 +39,22 @@ Defaults I picked where the brief was open. Change any of them freely.
 - **Per-app share images** are generated at build by `src/app/apps/[slug]/opengraph-image.tsx`. They export without a file extension, so `_headers` sets `Content-Type: image/png` for them.
 - **Changelog** has only the real site-launch entry. App release history is left for you to fill in rather than invented.
 - **CI** (`.github/workflows/ci.yml`) runs lint, typecheck and build on pushes to `main` and on pull requests.
+
+## Real apps, logo and redesign (30 Oct 2026)
+
+- **App copy, features, stack and privacy notes come from the live apps**, not guesses. I read each landing page and studio, and checked their JavaScript bundles to identify the stack:
+  - RyannPlan: Vite + Supabase + a Workers API + Google sign-in.
+  - RyannPace and RyannReceipt: Next.js on Workers, PWA, Google sign-in; RyannReceipt also uses Zustand and jsPDF.
+  - Supabase was *not* found in Pace or Receipt, so the earlier "shared Supabase backend" claim was removed from the privacy page, support FAQ and resume.
+- **Screenshots** were captured with headless Chrome at 1440×810, then re-encoded to WebP through Chrome's canvas encoder (no image library added). The two app studios show their built-in sample data, and the onboarding pop-ups were dismissed before capture.
+- **App logos** are each app's own published icon, copied into `public/projects/<slug>/`.
+- **RyannSuite logo:** a fanned stack of three cards in the apps' colours (Plan magenta `#D6337F`, Pace orange `#E4572E`, Receipt paper `#F3F1EC`) with an ink "R" on top, inside the same ink tile the Pace and Receipt icons use. The wordmark is "Ryann" plus an italic serif "Suite", echoing RyannPace's lockup. The source is `src/app/icon.svg`; `LogoMark` in `src/components/logo.tsx` is the same artwork.
+- **Brand palette changed** from zinc and indigo to the paper and ink base that RyannPace and RyannReceipt already use, with `--signal` (orange-red) as the shared highlight. Instrument Serif is used for italic accents. Every text colour pairing was checked for at least 4.5:1 contrast (most are at least 5:1) in both themes.
+- **Per-app accents** are now magenta, vermilion and ink, to match each app's own branding.
+- **Added:**
+  - an availability badge (`site.availability`, **please confirm**),
+  - a quick-facts strip,
+  - the "How I build" principles section (each claim is backed by what the live apps do),
+  - case-study pages with How it works, a gallery and "More from the suite",
+  - live app links on the resume.
+- **Performance:** only the front hero screenshot is high priority. On phones the collage is capped at 18rem wide, so the headline is the largest paint (0.9s on Lighthouse mobile).

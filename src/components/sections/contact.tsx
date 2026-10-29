@@ -13,9 +13,9 @@ export function Contact() {
         <div className="relative overflow-hidden rounded-3xl border border-border bg-card px-6 py-12 text-center sm:px-12 sm:py-16">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 -bottom-24 mx-auto h-48 max-w-lg rounded-full bg-primary/15 blur-3xl"
+            className="pointer-events-none absolute inset-x-0 -bottom-24 mx-auto h-48 max-w-lg rounded-full bg-signal/15 blur-3xl"
           />
-          <p className="font-mono text-xs font-medium tracking-widest text-primary uppercase">Contact</p>
+          <p className="font-mono text-xs font-medium tracking-widest text-signal-text uppercase">Contact</p>
           <h2 id="contact-heading" className="mt-2 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
             Let&apos;s talk
           </h2>

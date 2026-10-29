@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Check, ImageIcon, ShieldCheck } from "lucide-react";
+import { ArrowLeft, Check, ShieldCheck } from "lucide-react";
 import { getProject, projects } from "@/content/projects";
 import { sortedChangelog } from "@/content/changelog";
-import { ChangelogList } from "@/components/changelog-list";
 import { site } from "@/content/site";
 import { Container } from "@/components/ui/container";
 import { Badge, StatusBadge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { ExternalLink } from "@/components/ui/external-link";
-import { ProjectIcon } from "@/components/icons";
+import { AppLogo } from "@/components/app-logo";
+import { BrowserFrame } from "@/components/browser-frame";
+import { ChangelogList } from "@/components/changelog-list";
 import { OpenAppLink } from "@/components/open-app-link";
+import { ProjectCard } from "@/components/project-card";
 import { JsonLd } from "@/components/json-ld";
 import { softwareApplicationSchema } from "@/lib/structured-data";
-import { publicFileExists } from "@/lib/public-files";
 
 export const dynamicParams = false;
 
@@ -52,17 +53,20 @@ export default async function AppPage({ params }: PageProps<"/apps/[slug]">) {
   const project = getProject(slug);
   if (!project) notFound();
   const updates = sortedChangelog(project.slug);
+  const [cover, ...gallery] = project.screenshots;
+  const others = projects.filter((p) => p.slug !== project.slug);
 
   return (
     <div data-accent={project.accent}>
       <JsonLd data={softwareApplicationSchema(project)} />
 
       <section aria-labelledby="app-heading" className="relative overflow-hidden border-b border-border">
+        <div aria-hidden="true" className="bg-dots pointer-events-none absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 -top-48 -z-10 mx-auto h-96 max-w-3xl rounded-full bg-accent/20 blur-3xl"
+          className="pointer-events-none absolute -top-48 right-0 -z-10 h-96 w-[36rem] rounded-full bg-accent/15 blur-3xl"
         />
-        <Container className="py-14 sm:py-20">
+        <Container className="pt-12 pb-16 sm:pt-16">
           <Link
             href="/#apps"
             className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
@@ -70,30 +74,66 @@ export default async function AppPage({ params }: PageProps<"/apps/[slug]">) {
             <ArrowLeft aria-hidden="true" className="size-4" />
             Back to the suite
           </Link>
-          <div className="mt-8 flex items-center gap-3">
-            <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-accent/15 text-accent-text">
-              <ProjectIcon name={project.icon} className="size-6" />
-            </span>
-            <StatusBadge status={project.status} />
-            <Badge>{project.category}</Badge>
-          </div>
-          <h1 id="app-heading" className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">
-            {project.name}
-          </h1>
-          <p className="mt-3 text-xl text-pretty text-accent-text">{project.tagline}</p>
-          <p className="mt-5 max-w-2xl text-lg text-pretty text-muted-foreground">{project.description}</p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <OpenAppLink project={project} asButton />
-            {project.repoUrl && (
-              <ExternalLink href={project.repoUrl} className="text-sm font-medium hover:underline">
-                View source
-              </ExternalLink>
+          <div className="mt-8 grid items-center gap-12 lg:grid-cols-[1fr_1.15fr]">
+            <div>
+              <div className="flex flex-wrap items-center gap-3">
+                <AppLogo project={project} className="size-14" />
+                <StatusBadge status={project.status} />
+                <Badge>{project.category}</Badge>
+              </div>
+              <h1 id="app-heading" className="mt-6 text-5xl font-semibold tracking-tight sm:text-6xl">
+                {project.name}
+              </h1>
+              <p className="mt-3 font-serif text-2xl text-pretty text-accent-text italic sm:text-3xl">{project.tagline}</p>
+              <p className="mt-5 max-w-xl text-lg text-pretty text-muted-foreground">{project.description}</p>
+              <ul aria-label="Highlights" className="mt-6 flex flex-wrap gap-2">
+                {project.highlights.map((h) => (
+                  <li key={h} className="rounded-full border border-border bg-card px-3 py-1 text-sm">
+                    {h}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <OpenAppLink project={project} asButton />
+                {project.repoUrl && (
+                  <ExternalLink href={project.repoUrl} className="text-sm font-medium hover:underline">
+                    View source
+                  </ExternalLink>
+                )}
+              </div>
+            </div>
+            {cover && (
+              <figure>
+                <BrowserFrame shot={cover} url={project.liveUrl} priority />
+                {cover.caption && (
+                  <figcaption className="mt-3 text-center font-mono text-xs text-muted-foreground">{cover.caption}</figcaption>
+                )}
+              </figure>
             )}
           </div>
         </Container>
       </section>
 
-      <Container className="grid gap-10 py-14 sm:py-20 lg:grid-cols-[2fr_1fr]">
+      {project.howItWorks && (
+        <section aria-labelledby="how-heading" className="border-b border-border">
+          <Container className="py-14 sm:py-20">
+            <h2 id="how-heading" className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+              How it works
+            </h2>
+            <ol className={`mt-6 grid gap-6 sm:grid-cols-2 ${project.howItWorks.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
+              {project.howItWorks.map((step, i) => (
+                <li key={step.title} className="border-t-2 border-accent pt-4">
+                  <span className="font-mono text-xs text-accent-text">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="mt-1 text-lg font-semibold tracking-tight">{step.title}</h3>
+                  <p className="mt-1 text-muted-foreground">{step.description}</p>
+                </li>
+              ))}
+            </ol>
+          </Container>
+        </section>
+      )}
+
+      <Container className="grid grid-cols-[minmax(0,1fr)] gap-10 py-14 sm:py-20 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
         <section aria-labelledby="features-heading">
           <h2 id="features-heading" className="text-2xl font-semibold tracking-tight">
             Features
@@ -118,6 +158,7 @@ export default async function AppPage({ params }: PageProps<"/apps/[slug]">) {
                 </li>
               ))}
             </ul>
+            <p className="mt-4 text-sm text-muted-foreground">Designed, built and shipped solo by {site.owner.name}.</p>
           </Card>
           {project.privacyNotes && (
             <Card>
@@ -133,31 +174,23 @@ export default async function AppPage({ params }: PageProps<"/apps/[slug]">) {
           )}
         </div>
 
-        <section aria-labelledby="screens-heading" className="lg:col-span-2">
-          <h2 id="screens-heading" className="text-2xl font-semibold tracking-tight">
-            Screenshots
-          </h2>
-          <ul className="mt-5 grid gap-5 sm:grid-cols-2">
-            {project.screenshots.map((src, i) => (
-              <li key={src}>
-                {publicFileExists(src) ? (
-                  // eslint-disable-next-line @next/next/no-img-element -- static export serves images as-is
-                  <img
-                    src={src}
-                    alt={`${project.name} screenshot ${i + 1}`}
-                    loading="lazy"
-                    className="aspect-video w-full rounded-2xl border border-border object-cover"
-                  />
-                ) : (
-                  <div className="flex aspect-video w-full flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-border bg-muted/50 text-sm text-muted-foreground">
-                    <ImageIcon aria-hidden="true" className="size-6" />
-                    Screenshot coming soon
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
-        </section>
+        {gallery.length > 0 && (
+          <section aria-labelledby="screens-heading" className="lg:col-span-2">
+            <h2 id="screens-heading" className="text-2xl font-semibold tracking-tight">
+              A closer look
+            </h2>
+            <div className={gallery.length > 1 ? "mt-6 grid gap-8 md:grid-cols-2" : "mt-6 max-w-4xl"}>
+              {gallery.map((shot) => (
+                <figure key={shot.src}>
+                  <BrowserFrame shot={shot} url={project.liveUrl} />
+                  {shot.caption && (
+                    <figcaption className="mt-3 font-mono text-xs text-muted-foreground">{shot.caption}</figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
 
         {updates.length > 0 && (
           <section aria-labelledby="updates-heading" className="lg:col-span-2">
@@ -174,6 +207,19 @@ export default async function AppPage({ params }: PageProps<"/apps/[slug]">) {
             </div>
           </section>
         )}
+
+        <section aria-labelledby="more-heading" className="lg:col-span-2">
+          <h2 id="more-heading" className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+            More from the suite
+          </h2>
+          <ul className="mt-4 grid grid-cols-[minmax(0,1fr)] gap-4 sm:grid-cols-2">
+            {others.map((p) => (
+              <li key={p.slug}>
+                <ProjectCard project={p} />
+              </li>
+            ))}
+          </ul>
+        </section>
       </Container>
     </div>
   );

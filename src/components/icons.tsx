@@ -1,15 +1,3 @@
-import { Footprints, Map, Plane, Receipt, Timer, type LucideIcon, type LucideProps } from "lucide-react";
-
-/** Icons a project may use — add the Lucide import here to allow a new one. */
-export const projectIcons = { Map, Plane, Footprints, Timer, Receipt } satisfies Record<string, LucideIcon>;
-
-export type ProjectIconName = keyof typeof projectIcons;
-
-export function ProjectIcon({ name, ...props }: { name: ProjectIconName } & LucideProps) {
-  const Icon = projectIcons[name];
-  return <Icon aria-hidden="true" {...props} />;
-}
-
 // Lucide v1 no longer ships brand icons, so these two are inlined (Simple Icons paths, CC0).
 type SvgProps = React.SVGProps<SVGSVGElement> & { size?: number };
 

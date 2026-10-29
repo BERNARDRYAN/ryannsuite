@@ -14,7 +14,7 @@ export default function ChangelogPage() {
   return (
     <Container className="max-w-3xl py-14 sm:py-20">
       <header>
-        <p className="font-mono text-xs font-medium tracking-widest text-primary uppercase">{site.brand}</p>
+        <p className="font-mono text-xs font-medium tracking-widest text-signal-text uppercase">{site.brand}</p>
         <h1 className="mt-2 text-4xl font-semibold tracking-tight">Changelog</h1>
         <p className="mt-3 text-lg text-muted-foreground">What&apos;s new across the suite.</p>
       </header>

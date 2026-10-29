@@ -118,6 +118,14 @@ export default function ResumePage() {
               {projects.map((p) => (
                 <li key={p.slug}>
                   <span className="font-medium">{p.name}</span> — {p.tagline}
+                  {p.liveUrl && (
+                    <>
+                      {" "}
+                      <a href={p.liveUrl} className="font-mono text-xs text-muted-foreground hover:underline">
+                        {new URL(p.liveUrl).host}
+                      </a>
+                    </>
+                  )}
                 </li>
               ))}
             </ul>

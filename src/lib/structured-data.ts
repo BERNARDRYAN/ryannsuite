@@ -34,10 +34,14 @@ export function softwareApplicationSchema(project: Project) {
     "@type": "SoftwareApplication",
     name: project.name,
     description: project.description,
-    applicationCategory: `${project.category}Application`,
+    applicationCategory: project.schemaCategory,
     operatingSystem: "Web",
     url: project.liveUrl ?? absoluteUrl(`/apps/${project.slug}/`),
-    offers: { "@type": "Offer", price: "0", priceCurrency: "MYR" }, // TODO: confirm the apps are free
+    image: absoluteUrl(project.logo),
+    screenshot: project.screenshots.map((s) => absoluteUrl(s.src)),
+    featureList: project.features,
+    // Only claimed when the app itself says it is free.
+    ...(project.free && { offers: { "@type": "Offer", price: "0", priceCurrency: "MYR" } }),
     author: { "@type": "Person", name: site.owner.fullName },
     publisher: { "@type": "Organization", name: site.brand },
   };

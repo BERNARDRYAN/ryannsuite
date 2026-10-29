@@ -41,5 +41,5 @@ export const independentWork = {
   title: "Founder & sole developer",
   org: "RyannSuite",
   description:
-    "Design, build and run a suite of small web apps — RyannPlan, RyannPace and RyannReceipt — on a shared Supabase backend.",
+    "Design, build and ship a suite of web apps end to end — RyannPlan, RyannPace and RyannReceipt — from database and APIs to UI, deployed on Cloudflare.",
 };

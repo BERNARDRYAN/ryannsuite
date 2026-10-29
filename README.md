@@ -28,9 +28,10 @@ scripts/        ← postbuild steps: Windows export fix + per-page CSP (see NOTE
 
 Add one object to the `projects` array in [`src/content/projects.ts`](src/content/projects.ts). Nothing else needs to change. The home grid, `/apps/<slug>/` page, sitemap, JSON-LD, support page and hero all pick it up.
 
-- `accent` is one of `sky | orange | emerald | violet | rose | amber`.
-- `icon` is a key of `projectIcons` in [`src/components/icons.tsx`](src/components/icons.tsx). To use a different Lucide icon, add its import there.
-- Screenshots go in `public/projects/<slug>/` and are listed in `screenshots`. Missing files show a placeholder frame.
+- `accent` is one of `magenta | vermilion | ink | sky | orange | emerald | violet | rose | amber` (defined in `globals.css`).
+- `logo` is the app's square icon in `public/projects/<slug>/`.
+- `screenshots` are 16:9 WebP files in `public/projects/<slug>/`: a 1440px `screenshot-N.webp` and a 720px `screenshot-N-sm.webp` thumb. The first is the cover; also keep a `screenshot-1-sm.jpg`, which the share-image generator uses (it can't read WebP).
+- Set `free: true` only if the app itself says it's free (it adds price 0 to structured data).
 
 ### Posting an update
 
@@ -85,23 +86,18 @@ npx wrangler pages deploy out --project-name ryannsuite
 Collected from every `TODO:` in the codebase:
 
 **Links and identity**
-- [ ] Live URLs for RyannPlan, RyannPace and RyannReceipt: `liveUrl` in `src/content/projects.ts`
 - [ ] GitHub profile URL: `socials` in `src/content/site.ts`
 - [ ] LinkedIn profile URL: `socials` in `src/content/site.ts`
 - [ ] Custom domain: `url` in `src/content/site.ts` (see above), plus optional `public/_redirects`
 
 **Assets**
-- [ ] RyannSuite logo: replace `src/app/icon.svg`, `src/app/apple-icon.png`, `src/app/favicon.ico` and the text wordmark in `src/components/layout/site-header.tsx`
-- [ ] App screenshots: `public/projects/<slug>/screenshot-1.png` and `screenshot-2.png` (16:9)
-- [ ] OG image: `public/og.png` (1200×630). A generated placeholder is in place; replace it once there's a logo.
 - [ ] Real resume: `public/resume.pdf`
 
 **Content to confirm**
-- [ ] Each app's feature list and `stack` in `src/content/projects.ts`
-- [ ] Each app's accent colour matches its own branding: `src/content/projects.ts`
+- [ ] The "Open to graduate software engineering roles" badge: `availability` in `src/content/site.ts` (set it to `null` to hide it)
 - [ ] Skills: backend language/framework used at 7-Eleven, and the naming for Microsoft/Entra ID sign-in, in `src/content/skills.ts`
 - [ ] Support response time: `supportResponseTime` in `src/content/site.ts`
-- [ ] Apps are free: JSON-LD `offers` in `src/lib/structured-data.ts`
+- [ ] Which AI provider powers RyannPlan's recommendations: `src/app/privacy/page.tsx`
 - [ ] Release history for each app: `src/content/changelog.ts`
 
 **Legal**

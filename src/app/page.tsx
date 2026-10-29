@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/hero";
 import { Suite } from "@/components/sections/suite";
+import { Principles } from "@/components/sections/principles";
 import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
 import { Skills } from "@/components/sections/skills";
@@ -14,6 +15,7 @@ export default function HomePage() {
       <JsonLd data={organizationSchema()} />
       <Hero />
       <Suite />
+      <Principles />
       <About />
       <Experience />
       <Skills />

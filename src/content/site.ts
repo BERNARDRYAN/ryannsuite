@@ -4,12 +4,15 @@ export const site = {
   brand: "RyannSuite",
   tagline: "Small, thoughtful apps for everyday life.",
   description:
-    "RyannSuite is a family of small, well-made apps — RyannPlan, RyannPace and RyannReceipt — designed and built by Bernard Ryan Sim, software engineer.",
+    "RyannSuite is a family of small, well-made apps — RyannPlan for group trips, RyannPace for run posters and RyannReceipt for spending — designed, built and shipped solo by Bernard Ryan Sim, software engineer.",
   owner: {
     fullName: "Bernard Ryan Sim Kang Xuan",
     name: "Bernard Ryan Sim",
     role: "Software engineer",
   },
+  // Shown as a badge in the hero and on the resume. Set to null to hide.
+  // TODO: confirm wording (or set to null if you're not job-hunting).
+  availability: "Open to graduate software engineering roles" as string | null,
   email: "ryannplan.app@gmail.com",
   // TODO: replace with the custom domain once connected (drives metadataBase, canonical URLs, sitemap, robots).
   url: "https://ryannsuite.pages.dev",

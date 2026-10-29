@@ -15,7 +15,7 @@ export function Section({ id, eyebrow, heading, description, className, children
         {(eyebrow || heading || description) && (
           <header className="mb-10 max-w-2xl">
             {eyebrow && (
-              <p className="font-mono text-xs font-medium tracking-widest text-primary uppercase">{eyebrow}</p>
+              <p className="font-mono text-xs font-medium tracking-widest text-signal-text uppercase">{eyebrow}</p>
             )}
             {heading && (
               <h2 id={headingId} className="mt-2 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">

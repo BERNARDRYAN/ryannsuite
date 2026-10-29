@@ -1,9 +1,30 @@
-import type { ProjectIconName } from "@/components/icons";
-
 /** Accent palettes defined in `globals.css` under `[data-accent="…"]`. */
-export type AccentColor = "sky" | "orange" | "emerald" | "violet" | "rose" | "amber";
+export type AccentColor =
+  | "magenta"
+  | "vermilion"
+  | "ink"
+  | "sky"
+  | "orange"
+  | "emerald"
+  | "violet"
+  | "rose"
+  | "amber";
 
 export type ProjectStatus = "live" | "beta" | "coming-soon";
+
+export interface Screenshot {
+  /** Full-size image under `public/`, e.g. `/projects/ryannplan/screenshot-1.jpg` (16:9). */
+  src: string;
+  /** Optional ~720px-wide version used in cards and the hero. */
+  thumb?: string;
+  alt: string;
+  caption?: string;
+}
+
+export interface Step {
+  title: string;
+  description: string;
+}
 
 export interface Project {
   slug: string;
@@ -13,18 +34,25 @@ export interface Project {
   /** 2–3 sentences. */
   description: string;
   category: string;
+  /** schema.org applicationCategory, e.g. "TravelApplication". */
+  schemaCategory: string;
   status: ProjectStatus;
-  /** `null` until the live URL is known — the UI shows "Link coming soon". */
   liveUrl: string | null;
   repoUrl?: string | null;
   accent: AccentColor;
-  icon: ProjectIconName;
+  /** App icon under `public/` (square). */
+  logo: string;
+  /** Short selling points shown as chips, e.g. "No sign-up". */
+  highlights: string[];
   /** 4–6 items. */
   features: string[];
+  howItWorks?: Step[];
   stack: string[];
-  /** Paths relative to `public/`, e.g. `/projects/ryannplan/screenshot-1.png`. Missing files render as placeholder frames. */
-  screenshots: string[];
+  /** First screenshot is the cover image. */
+  screenshots: Screenshot[];
   privacyNotes?: string;
+  /** True only when the app itself says it's free. */
+  free?: boolean;
 }
 
 export interface ExperienceHighlight {

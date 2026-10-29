@@ -9,7 +9,7 @@ function TimelineItem({ item }: { item: ExperienceItem }) {
     <li className="relative pb-12 pl-10 last:pb-0">
       <span
         aria-hidden="true"
-        className="absolute top-0 left-0 inline-flex size-7 items-center justify-center rounded-full border border-border bg-card text-primary"
+        className="absolute top-0 left-0 inline-flex size-7 items-center justify-center rounded-full border border-border bg-card text-signal-text"
       >
         <Icon className="size-3.5" />
       </span>

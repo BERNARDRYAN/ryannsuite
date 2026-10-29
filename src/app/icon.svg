@@ -1,5 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- TODO: replace with the RyannSuite logo. Placeholder "R" monogram. -->
-  <rect width="64" height="64" rx="14" fill="#4f46e5"/>
-  <path d="M22 48V16h12.5c6.4 0 10.5 3.7 10.5 9.4 0 4.3-2.4 7.4-6.3 8.6L46 48h-7.2l-6.6-13.4H28.4V48H22Zm6.4-18.6h5.6c3 0 4.6-1.5 4.6-4s-1.6-4-4.6-4h-5.6v8Z" fill="#fff"/>
+  <!-- RyannSuite mark: the suite as a fanned stack — RyannPlan magenta, RyannPace orange, RyannReceipt paper. -->
+  <rect width="64" height="64" rx="15" fill="#141413"/>
+  <g transform="translate(-1 1)">
+    <rect x="18" y="14" width="25" height="34" rx="5" fill="#D6337F" transform="rotate(-22 30.5 47)"/>
+    <rect x="18" y="14" width="25" height="34" rx="5" fill="#E4572E" transform="rotate(-9 30.5 47)"/>
+    <g transform="rotate(5 30.5 47)">
+      <rect x="18" y="14" width="25" height="34" rx="5" fill="#F3F1EC"/>
+      <path d="M25.5 40.5v-19h6.4c3.8 0 6 2.1 6 5.2s-2.2 5.2-6 5.2h-6.4M31.3 31.9l6.5 8.6" fill="none" stroke="#141413" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
 </svg>
