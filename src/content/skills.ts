@@ -4,23 +4,23 @@ import type { SkillGroup } from "@/types/content";
 export const skillGroups: SkillGroup[] = [
   {
     name: "Languages",
-    skills: ["TypeScript", "JavaScript", "HTML / CSS", "Python", "Java", "C++", "SQL"],
+    skills: ["TypeScript", "JavaScript", "C#", "SQL", "HTML / CSS", "Python", "Java", "C++"],
   },
   {
     name: "Frontend",
-    skills: ["Next.js", "React", "Tailwind CSS", "Vite", "PWAs / offline"],
+    skills: ["Next.js", "React", "MUI", "Tailwind CSS", "Vite", "PWAs / offline"],
   },
   {
     name: "Backend & Data",
-    skills: ["Supabase / PostgreSQL", "Firebase", "SQLite", "REST APIs", "Cloudflare Workers"], // TODO: confirm — add any backend language/framework used at 7-Eleven
+    skills: ["NestJS", "ASP.NET Core", "PostgreSQL", "Supabase", "Firebase", "REST APIs", "Cloudflare Workers"],
   },
   {
     name: "Auth",
-    skills: ["Microsoft / Entra ID sign-in", "Google sign-in (OAuth)"], // TODO: confirm naming used on the E-Sourcing Platform
+    skills: ["Microsoft sign-in", "Role-based access control", "Google sign-in (OAuth)", "Secure session cookies"],
   },
   {
     name: "Tools & Design",
-    skills: ["Git", "Cloudflare Pages", "VS Code", "Figma"],
+    skills: ["Git", "Azure DevOps", "Postman", "pgAdmin", "Cloudflare Pages", "Figma"],
   },
   {
     name: "Foundations",

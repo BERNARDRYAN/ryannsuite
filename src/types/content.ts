@@ -79,6 +79,7 @@ export interface OtherProject {
   context: string;
   description: string;
   stack: string[];
+  repoUrl?: string;
 }
 
 export interface SkillGroup {

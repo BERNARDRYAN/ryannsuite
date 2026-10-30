@@ -140,7 +140,13 @@ export default function ResumePage() {
           <ul className="list-disc space-y-1 pl-5">
             {otherProjects.map((p) => (
               <li key={p.name}>
-                <span className="font-medium">{p.name}</span>{" "}
+                {p.repoUrl ? (
+                  <a href={p.repoUrl} className="font-medium hover:underline">
+                    {p.name}
+                  </a>
+                ) : (
+                  <span className="font-medium">{p.name}</span>
+                )}{" "}
                 <span className="text-muted-foreground">
                   ({[p.context, ...p.stack].join(" · ")})
                 </span>{" "}

@@ -3,7 +3,7 @@ import type { ExperienceItem, OtherProject } from "@/types/content";
 export const work: ExperienceItem[] = [
   {
     kind: "work",
-    title: "Industrial Trainee",
+    title: "Full-Stack Developer Intern",
     org: "7-Eleven Malaysia",
     orgDetail: "IT Department – Development Team",
     start: "27 Jul 2026",
@@ -11,16 +11,18 @@ export const work: ExperienceItem[] = [
     highlights: [
       {
         name: "E-Sourcing Platform",
-        description: "Built from scratch — an internal user platform with Microsoft login.",
+        description:
+          "Built the internal user platform from scratch with Next.js, NestJS and PostgreSQL: vendor management, sourcing events and purchase requests, behind Microsoft login with role-based access. Delivered every user story, then wrote the documentation and handed it over to the next intern.",
       },
       {
         name: "Printing Service",
         description:
-          "Worked across frontend and backend; implemented the customer app UI revamp from a provided prototype, identifying and implementing improvements along the way.",
+          "Implemented the redesigned customer app across every page, responsive and mobile-first, and built the payment result page and a back-office reconciliation dashboard with Excel export. Moved customer login to secure server-set session cookies.",
       },
       {
         name: "DSIP (Digital Sales Integration Platform)",
-        description: "Contributed to development.",
+        description:
+          "Fixed production bugs in voucher handling, order totals and file uploads, and added order and article search, in a C# / ASP.NET Core and React app.",
       },
     ],
   },
@@ -48,10 +50,11 @@ export const independentWork = {
 export const otherProjects: OtherProject[] = [
   {
     name: "Knowledge Hub",
-    context: "Hack Day, Multimedia University",
+    context: "Hack Day, Multimedia University · team project",
     description:
       "A student-sourced study platform where peers share tutorials and past-year papers, with AI auto-filling and note summarisation to organise content.",
-    stack: [], // TODO: add the tech used at Hack Day.
+    stack: ["PHP", "JavaScript"],
+    repoUrl: "https://github.com/Yongqx-0313/Student-Sources-Study-Material-Platform",
   },
   {
     name: "Robot War Simulator",
@@ -59,11 +62,5 @@ export const otherProjects: OtherProject[] = [
     description:
       "A turn-based 2D battlefield game with robot upgrades and evolving abilities, built on OOP with abstract base classes for modular movement and attack logic.",
     stack: ["C++"],
-  },
-  {
-    name: "Course Registration Application",
-    context: "Coursework",
-    description: "A desktop app that digitalises student enrolment and enforces class limits.",
-    stack: ["Python", "Tkinter", "SQLite"],
   },
 ];
