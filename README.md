@@ -1,5 +1,7 @@
 # RyannSuite
 
+**Live:** https://ryannsuite.pages.dev
+
 The homepage of the **RyannSuite** app ecosystem (RyannPlan, RyannPace, RyannReceipt) and the portfolio/resume of **Bernard Ryan Sim**.
 
 It is a fully static Next.js site (`output: "export"`) hosted free on Cloudflare Pages. There is no server runtime and no backend.
