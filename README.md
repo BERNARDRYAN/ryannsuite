@@ -86,8 +86,6 @@ npx wrangler pages deploy out --project-name ryannsuite
 Collected from every `TODO:` in the codebase:
 
 **Links and identity**
-- [ ] GitHub profile URL: `socials` in `src/content/site.ts`
-- [ ] LinkedIn profile URL: `socials` in `src/content/site.ts`
 - [ ] Custom domain: `url` in `src/content/site.ts` (see above), plus optional `public/_redirects`
 
 **Assets**

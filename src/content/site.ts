@@ -13,7 +13,10 @@ export const site = {
   // Shown as a badge in the hero and on the resume. Set to null to hide.
   // TODO: confirm wording (or set to null if you're not job-hunting).
   availability: "Open to graduate software engineering roles" as string | null,
-  email: "ryannplan.app@gmail.com",
+  /** Personal contact for the portfolio (hero, contact section, footer, resume). */
+  email: "ryansim727@gmail.com",
+  /** App support address — the one the apps themselves publish. Used on privacy, terms and support pages. */
+  supportEmail: "ryannplan.app@gmail.com",
   // TODO: replace with the custom domain once connected (drives metadataBase, canonical URLs, sitemap, robots).
   url: "https://ryannsuite.pages.dev",
   // TODO: replace with the real resume PDF at public/resume.pdf.
@@ -28,10 +31,8 @@ export const site = {
     { label: "Contact", href: "/#contact" },
   ] as NavItem[],
   socials: [
-    // TODO: add GitHub profile URL, e.g. "https://github.com/<username>".
-    { label: "GitHub", href: null },
-    // TODO: add LinkedIn profile URL, e.g. "https://www.linkedin.com/in/<handle>".
-    { label: "LinkedIn", href: null },
+    { label: "GitHub", href: "https://github.com/BERNARDRYAN" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/bernard-ryan-kang-xuan-sim-1b17792a7/" },
   ] as SocialLink[],
 };
 

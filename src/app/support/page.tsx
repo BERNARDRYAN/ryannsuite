@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "How do I get help with an app?",
-    a: `Email ${site.email} with the app's name, what you were trying to do, and what happened instead. Screenshots help.`,
+    a: `Email ${site.supportEmail} with the app's name, what you were trying to do, and what happened instead. Screenshots help.`,
   },
   {
     q: "Do I need an account?",
@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     q: "How do I delete my account and data?",
-    a: `Email ${site.email} from the address on your account, say which app, and ask for deletion. For data kept only in your browser, clearing the site's data removes it.`,
+    a: `Email ${site.supportEmail} from the address on your account, say which app, and ask for deletion. For data kept only in your browser, clearing the site's data removes it.`,
   },
   {
     q: "Can I suggest a feature?",
@@ -44,14 +44,14 @@ export default function SupportPage() {
       intro={
         <p>
           Something not working, or have a question? Email{" "}
-          <a href={`mailto:${site.email}`} className="text-signal-text underline underline-offset-4">
-            {site.email}
+          <a href={`mailto:${site.supportEmail}`} className="text-signal-text underline underline-offset-4">
+            {site.supportEmail}
           </a>{" "}
           and you&apos;ll usually hear back {site.supportResponseTime}.
         </p>
       }
     >
-      <Button href={`mailto:${site.email}?subject=Support%20request`}>
+      <Button href={`mailto:${site.supportEmail}?subject=Support%20request`}>
         <Mail aria-hidden="true" />
         Email support
       </Button>
@@ -76,7 +76,7 @@ export default function SupportPage() {
             <AppLogo project={p} className="mt-0.5 size-6" />
             <span>
               <strong>{p.name}</strong> — {p.tagline}{" "}
-              <a href={`mailto:${site.email}?subject=${encodeURIComponent(`${p.name} support`)}`}>Email about {p.name}</a>
+              <a href={`mailto:${site.supportEmail}?subject=${encodeURIComponent(`${p.name} support`)}`}>Email about {p.name}</a>
               {" · "}
               <Link href={`/apps/${p.slug}/`}>About the app</Link>
             </span>

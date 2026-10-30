@@ -50,7 +50,7 @@ export default function TermsPage() {
 
       <h2>Contact</h2>
       <p>
-        Questions? Email <a href={`mailto:${site.email}`}>{site.email}</a>.
+        Questions? Email <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>.
       </p>
     </DocPage>
   );

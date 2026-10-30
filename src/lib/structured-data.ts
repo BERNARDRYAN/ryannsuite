@@ -23,7 +23,7 @@ export function organizationSchema() {
     "@type": "Organization",
     name: site.brand,
     url: absoluteUrl("/"),
-    email: site.email,
+    email: site.supportEmail,
     founder: { "@type": "Person", name: site.owner.fullName },
   };
 }

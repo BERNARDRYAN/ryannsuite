@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { site } from "@/content/site";
+import { activeSocials, site } from "@/content/site";
+import { socialIcons } from "@/components/icons";
 import { Container } from "@/components/ui/container";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Logo } from "@/components/logo";
@@ -27,6 +28,21 @@ export function SiteHeader() {
           </ul>
         </nav>
         <div className="flex items-center gap-1">
+          {activeSocials.map((s) => {
+            const Icon = socialIcons[s.label];
+            return (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden size-9 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:inline-flex"
+              >
+                <Icon size={16} />
+                <span className="sr-only">{s.label} (opens in a new tab)</span>
+              </a>
+            );
+          })}
           <ThemeToggle />
           <MobileNav items={site.nav} />
         </div>

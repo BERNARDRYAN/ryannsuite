@@ -30,7 +30,7 @@ export default function PrivacyPage() {
       <p>
         {site.brand} is a set of apps designed, built and run by {site.owner.fullName}, an independent developer. When
         this policy says &quot;we&quot;, it means {site.owner.name}. You can reach us at{" "}
-        <a href={`mailto:${site.email}`}>{site.email}</a>.
+        <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>.
       </p>
 
       <h2>What we may store</h2>
@@ -80,7 +80,7 @@ export default function PrivacyPage() {
       <h2>Your choices and deletion</h2>
       <p>
         You can ask for a copy of your data, or for your account and everything linked to it to be deleted, by emailing{" "}
-        <a href={`mailto:${site.email}?subject=Data%20deletion%20request`}>{site.email}</a> from the address on your
+        <a href={`mailto:${site.supportEmail}?subject=Data%20deletion%20request`}>{site.supportEmail}</a> from the address on your
         account. We&apos;ll confirm once it&apos;s done.
       </p>
 
