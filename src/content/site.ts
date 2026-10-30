@@ -9,7 +9,7 @@ export const site = {
     fullName: "Bernard Ryan Sim Kang Xuan",
     name: "Bernard Ryan Sim",
     role: "Software engineer",
-    location: "Cyberjaya, Malaysia",
+    location: "Johor Bahru, Malaysia",
   },
   /** Two or three sentences at the top of the resume. */
   resumeSummary:
