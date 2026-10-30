@@ -67,7 +67,18 @@ export interface ExperienceItem {
   orgDetail?: string;
   start: string;
   end: string;
+  /** Short extra line, e.g. a CGPA. */
+  note?: string;
   highlights?: ExperienceHighlight[];
+}
+
+/** Hackathon and coursework projects — shown on the resume, not as suite apps. */
+export interface OtherProject {
+  name: string;
+  /** Where it was built, e.g. "Hack Day, Multimedia University". */
+  context: string;
+  description: string;
+  stack: string[];
 }
 
 export interface SkillGroup {

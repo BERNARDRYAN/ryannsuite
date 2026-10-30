@@ -1,4 +1,4 @@
-import type { ExperienceItem } from "@/types/content";
+import type { ExperienceItem, OtherProject } from "@/types/content";
 
 export const work: ExperienceItem[] = [
   {
@@ -34,6 +34,7 @@ export const education: ExperienceItem[] = [
     orgDetail: "Faculty of Computing and Informatics",
     start: "Oct 2023",
     end: "Nov 2026 (expected)",
+    note: "CGPA 3.75 / 4.00", // TODO: update to the final CGPA once released.
   },
 ];
 
@@ -43,3 +44,26 @@ export const independentWork = {
   description:
     "Design, build and ship a suite of web apps end to end — RyannPlan, RyannPace and RyannReceipt — from database and APIs to UI, deployed on Cloudflare.",
 };
+
+export const otherProjects: OtherProject[] = [
+  {
+    name: "Knowledge Hub",
+    context: "Hack Day, Multimedia University",
+    description:
+      "A student-sourced study platform where peers share tutorials and past-year papers, with AI auto-filling and note summarisation to organise content.",
+    stack: [], // TODO: add the tech used at Hack Day.
+  },
+  {
+    name: "Robot War Simulator",
+    context: "Coursework",
+    description:
+      "A turn-based 2D battlefield game with robot upgrades and evolving abilities, built on OOP with abstract base classes for modular movement and attack logic.",
+    stack: ["C++"],
+  },
+  {
+    name: "Course Registration Application",
+    context: "Coursework",
+    description: "A desktop app that digitalises student enrolment and enforces class limits.",
+    stack: ["Python", "Tkinter", "SQLite"],
+  },
+];

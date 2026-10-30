@@ -21,6 +21,7 @@ function TimelineItem({ item }: { item: ExperienceItem }) {
         {item.org}
         {item.orgDetail && <> · {item.orgDetail}</>}
       </p>
+      {item.note && <p className="mt-1 font-mono text-sm">{item.note}</p>}
       {item.highlights && (
         <ul className="mt-5 grid gap-3 sm:grid-cols-3">
           {item.highlights.map((h) => (

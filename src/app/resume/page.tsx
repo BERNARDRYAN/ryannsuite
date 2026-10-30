@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Download, Printer } from "lucide-react";
-import { education, independentWork, work } from "@/content/experience";
+import { education, independentWork, otherProjects, work } from "@/content/experience";
 import { projects } from "@/content/projects";
 import { skillGroups } from "@/content/skills";
 import { activeSocials, site } from "@/content/site";
@@ -54,7 +54,6 @@ export default function ResumePage() {
     <Container className="max-w-3xl py-14 sm:py-20 print:max-w-none print:p-0">
       <JsonLd data={personSchema()} />
       <div className="mb-10 flex flex-wrap gap-3 print:hidden">
-        {/* TODO: add the real PDF at public/resume.pdf */}
         <Button href={site.resumePdf} download>
           <Download aria-hidden="true" />
           Download PDF
@@ -70,6 +69,7 @@ export default function ResumePage() {
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl print:text-2xl">{site.owner.fullName}</h1>
           <p className="mt-1 text-lg text-muted-foreground">Software Engineer · Founder of {site.brand}</p>
           <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+            <li>{site.owner.location}</li>
             <li>
               <a href={`mailto:${site.email}`} className="hover:underline">
                 {site.email}
@@ -88,6 +88,10 @@ export default function ResumePage() {
               </li>
             ))}
           </ul>
+          <p className="mt-4 text-pretty">
+            {site.resumeSummary}
+            {site.availability && <> {site.availability}.</>}
+          </p>
         </header>
 
         <ResumeSection title="Experience">
@@ -132,12 +136,26 @@ export default function ResumePage() {
           </Entry>
         </ResumeSection>
 
+        <ResumeSection title="Other projects">
+          <ul className="list-disc space-y-1 pl-5">
+            {otherProjects.map((p) => (
+              <li key={p.name}>
+                <span className="font-medium">{p.name}</span>{" "}
+                <span className="text-muted-foreground">
+                  ({[p.context, ...p.stack].join(" · ")})
+                </span>{" "}
+                — {p.description}
+              </li>
+            ))}
+          </ul>
+        </ResumeSection>
+
         <ResumeSection title="Education">
           {education.map((item) => (
             <Entry
               key={item.org}
               title={item.title}
-              org={[item.org, item.orgDetail].filter(Boolean).join(" · ")}
+              org={[item.org, item.orgDetail, item.note].filter(Boolean).join(" · ")}
               dates={`${item.start} – ${item.end}`}
             />
           ))}
@@ -154,8 +172,13 @@ export default function ResumePage() {
           </dl>
         </ResumeSection>
 
-        <ResumeSection title="Interests">
-          <p className="capitalize">{site.interests.join(" · ")}</p>
+        <ResumeSection title="Languages & interests">
+          <dl className="grid gap-2 sm:grid-cols-[10rem_1fr] print:grid-cols-[9rem_1fr]">
+            <dt className="font-medium">Languages</dt>
+            <dd className="text-muted-foreground">{site.languages.join(", ")}</dd>
+            <dt className="font-medium">Interests</dt>
+            <dd className="text-muted-foreground capitalize">{site.interests.join(", ")}</dd>
+          </dl>
         </ResumeSection>
       </article>
     </Container>

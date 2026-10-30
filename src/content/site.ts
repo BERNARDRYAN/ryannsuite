@@ -9,7 +9,13 @@ export const site = {
     fullName: "Bernard Ryan Sim Kang Xuan",
     name: "Bernard Ryan Sim",
     role: "Software engineer",
+    location: "Cyberjaya, Malaysia",
   },
+  /** Two or three sentences at the top of the resume. */
+  resumeSummary:
+    "Final-year Software Engineering student at Multimedia University, graduating November 2026, with a focus on frontend development. During an industrial traineeship at 7-Eleven Malaysia I built an internal e-sourcing platform from scratch; on my own I design, build and ship RyannSuite, three live web apps running on Cloudflare.",
+  /** Spoken languages, shown on the resume. */
+  languages: ["English", "Chinese", "Malay"], // TODO: say "Mandarin" if that's what you mean by Chinese.
   // Shown as a badge in the hero and on the resume. Set to null to hide.
   // TODO: confirm wording (or set to null if you're not job-hunting).
   availability: "Open to graduate software engineering roles" as string | null,
@@ -19,7 +25,7 @@ export const site = {
   supportEmail: "ryannplan.app@gmail.com",
   // TODO: replace with the custom domain once connected (drives metadataBase, canonical URLs, sitemap, robots).
   url: "https://ryannsuite.pages.dev",
-  // TODO: replace with the real resume PDF at public/resume.pdf.
+  // Regenerate after resume edits: print /resume/ to PDF (A4, no headers) and save over public/resume.pdf.
   resumePdf: "/resume.pdf",
   // TODO: typical support response time.
   supportResponseTime: "within 3 working days",
