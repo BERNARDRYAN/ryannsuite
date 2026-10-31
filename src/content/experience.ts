@@ -12,7 +12,7 @@ export const work: ExperienceItem[] = [
       {
         name: "E-Sourcing Platform",
         description:
-          "Built the internal user platform from scratch with Next.js, NestJS and PostgreSQL: vendor management, sourcing events and purchase requests, behind Microsoft login with role-based access. Delivered every user story, then wrote the documentation and handed it over to the next intern.",
+          "Built the internal user platform from scratch with Next.js, NestJS and PostgreSQL, using a backend-for-frontend (BFF) layer between the UI and the API: vendor management, sourcing events and purchase requests, behind Microsoft login with role-based access. Delivered every user story, documented the platform and handed it over to the next intern.",
       },
       {
         name: "Printing Service",
