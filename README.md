@@ -1,12 +1,54 @@
 # RyannSuite
 
+**Small, thoughtful apps for everyday life.**
+The homepage of the RyannSuite apps and the developer portfolio and resume of
+[Bernard Ryan Sim](https://www.linkedin.com/in/bernard-ryan-kang-xuan-sim-1b17792a7/), a Software Engineering graduate.
+
 **Live:** https://ryannsuite.pages.dev
 
-The homepage of the **RyannSuite** app ecosystem (RyannPlan, RyannPace, RyannReceipt) and the portfolio/resume of **Bernard Ryan Sim**.
+![RyannSuite home page: "Small, thoughtful apps for everyday life" beside a stack of app screenshots](docs/screenshots/home.jpg)
 
-It is a fully static Next.js site (`output: "export"`) hosted free on Cloudflare Pages. There is no server runtime and no backend.
+## The apps
 
-**Stack:** Next.js 16 (App Router), TypeScript (strict), Tailwind CSS 4, Lucide React.
+| App | What it does | Source |
+|---|---|---|
+| [RyannPlan](https://ryannplan.pages.dev/) | Plan, budget and settle group trips in one place | Private |
+| [RyannPace](https://ryannpace.ryannpace-app.workers.dev/) | Turn your run into a magazine-cover poster | [BERNARDRYAN/RyannPace](https://github.com/BERNARDRYAN/RyannPace) |
+| [RyannReceipt](https://ryannreceipt.ryannsuite.workers.dev/) | Track spending fast; print a retro receipt anytime | [BERNARDRYAN/ryannreceipt](https://github.com/BERNARDRYAN/ryannreceipt) |
+
+## Screenshots
+
+| Each app gets a showcase and a case-study page | Dark mode |
+|---|---|
+| ![The suite section with RyannPlan's showcase](docs/screenshots/apps.jpg) | ![The home page in dark mode](docs/screenshots/home-dark.jpg) |
+| ![The RyannPace case-study page](docs/screenshots/app-page.jpg) | <img src="docs/screenshots/mobile.jpg" alt="The home page on a phone" width="260"> |
+
+## Highlights
+
+- **Fully static, $0 hosting.** A Next.js static export (`output: "export"`) on Cloudflare Pages, with
+  no server runtime and no backend.
+- **Fast and accessible.** Lighthouse scores 100 for performance, accessibility, best practices and
+  SEO on mobile.
+- **Strict security.**
+  - Every page gets its own Content-Security-Policy, with SHA-256 hashes of its inline scripts
+    (`scripts/add-csp.mjs`).
+  - Security headers are set in `public/_headers`.
+- **Content-driven.** All text and data live in `src/content/`. Adding an app is one object in
+  `projects.ts`, and the home page, the case-study page, the sitemap and the structured data all
+  pick it up.
+- **Built for sharing and search:**
+  - a generated share image for each app (`opengraph-image.tsx`),
+  - JSON-LD for the person, the organisation and each app,
+  - a sitemap and robots.txt.
+- **Printable resume.** `/resume` prints to a clean one-page A4 PDF.
+- **Light and dark themes** with no flash on load.
+- **CI on every push:** GitHub Actions runs lint, type checking and the build.
+
+**Stack:** Next.js 16 (App Router), React 19, TypeScript (strict), Tailwind CSS 4, Lucide React.
+
+---
+
+The rest of this README is for working on the site.
 
 ## Project layout
 
@@ -24,6 +66,7 @@ src/
 public/         ← og.png, resume.pdf, _headers, _redirects, app screenshots
 scripts/        ← postbuild steps: Windows export fix + per-page CSP (see NOTES.md)
 .github/        ← CI: lint, typecheck and build on every push and PR
+docs/           ← README screenshots (not deployed)
 ```
 
 ### Adding a new app
@@ -57,8 +100,6 @@ npm start          # serve out/ locally (npx serve out)
 
 ## Deploying to Cloudflare Pages ($0)
 
-Cloudflare account: ryansim727@gmail.com
-
 1. Push this repo to GitHub.
 2. Open the Cloudflare dashboard, then go to **Workers & Pages → Create → Pages → Connect to Git** and pick the repo.
 3. Build settings:
@@ -83,25 +124,17 @@ npx wrangler pages deploy out --project-name ryannsuite
 2. Update `url` in [`src/content/site.ts`](src/content/site.ts). It drives `metadataBase`, canonical URLs, Open Graph URLs, `sitemap.xml` and `robots.txt`.
 3. Optionally redirect the `*.pages.dev` address to the custom domain (see the example in `public/_redirects`), then rebuild and deploy.
 
-## Fill these in
+## Still to do
 
-Collected from every `TODO:` in the codebase:
+Collected from the `TODO:` comments in the codebase:
 
-**Links and identity**
 - [ ] Custom domain: `url` in `src/content/site.ts` (see above), plus optional `public/_redirects`
-
-**Assets**
-- [ ] Real resume: `public/resume.pdf`
-
-**Content to confirm**
-- [ ] The "Open to graduate software engineering roles" badge: `availability` in `src/content/site.ts` (set it to `null` to hide it)
-- [ ] Skills: backend language/framework used at 7-Eleven, and the naming for Microsoft/Entra ID sign-in, in `src/content/skills.ts`
 - [ ] Support response time: `supportResponseTime` in `src/content/site.ts`
-- [ ] Which AI provider powers RyannPlan's recommendations: `src/app/privacy/page.tsx`
 - [ ] Release history for each app: `src/content/changelog.ts`
-
-**Legal**
-- [ ] Review `/privacy` (`src/app/privacy/page.tsx`). It is a template, not legal advice.
-- [ ] Review `/terms` (`src/app/terms/page.tsx`). It is a template, not legal advice.
+- [ ] Review `/privacy` and `/terms`. They are templates, not legal advice.
 
 See [`NOTES.md`](NOTES.md) for the decisions made during the build.
+
+---
+
+Built by [Bernard Ryan Sim](https://ryannsuite.pages.dev). © Bernard Ryan Sim. All rights reserved.

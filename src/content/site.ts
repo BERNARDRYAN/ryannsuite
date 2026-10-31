@@ -17,7 +17,6 @@ export const site = {
   /** Spoken languages, shown on the resume. */
   languages: ["English", "Chinese", "Malay"],
   // Shown as a badge in the hero and on the resume. Set to null to hide.
-  // TODO: confirm wording (or set to null if you're not job-hunting).
   availability: "Open to graduate software engineering roles" as string | null,
   /** Personal contact for the portfolio (hero, contact section, footer, resume). */
   email: "ryansim727@gmail.com",
