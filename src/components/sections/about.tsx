@@ -7,8 +7,8 @@ export function About() {
       <div className="grid gap-10 md:grid-cols-[1fr_auto]">
         <div className="max-w-2xl space-y-4 text-lg text-pretty text-muted-foreground">
           <p>
-            I&apos;m a Software Engineering student at Multimedia University, finishing my Bachelor of Computer
-            Science in November 2026. I recently completed a full-stack developer internship with the development team
+            I&apos;m a Software Engineering graduate from Multimedia University, with a Bachelor of Computer
+            Science (Hons.). I recently completed a full-stack developer internship with the development team
             at 7-Eleven Malaysia, where I built an internal e-sourcing platform from scratch, worked on the customer app
             UI revamp for the printing service, and fixed bugs and added features in its Digital Sales Integration Platform.
           </p>

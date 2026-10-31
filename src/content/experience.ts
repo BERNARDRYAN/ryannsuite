@@ -31,12 +31,12 @@ export const work: ExperienceItem[] = [
 export const education: ExperienceItem[] = [
   {
     kind: "education",
-    title: "Bachelor of Computer Science (Software Engineering)",
+    title: "Bachelor of Computer Science (Hons.), Software Engineering",
     org: "Multimedia University (MMU)",
     orgDetail: "Faculty of Computing and Informatics",
     start: "Oct 2023",
     end: "Nov 2026",
-    note: "CGPA 3.75 / 4.00 · Convocation Dec 2026",
+    note: "CGPA 3.75 / 4.00",
   },
 ];
 
