@@ -20,7 +20,12 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {site.brand}
           </p>
-          <p>Built by {site.owner.name}</p>
+          <p>
+            Built by {site.owner.name} ·{" "}
+            <ExternalLink href={site.sourceRepo} className="hover:text-foreground">
+              Source<span className="sr-only"> code of this site</span>
+            </ExternalLink>
+          </p>
         </div>
         <div className="flex flex-col gap-3 sm:items-end">
           <div className="flex flex-wrap items-center gap-4">

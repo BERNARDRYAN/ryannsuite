@@ -4,6 +4,7 @@ import type { Project } from "@/types/content";
 import { AppLogo } from "@/components/app-logo";
 import { BrowserFrame } from "@/components/browser-frame";
 import { OpenAppLink } from "@/components/open-app-link";
+import { ExternalLink } from "@/components/ui/external-link";
 import { cn } from "@/lib/utils";
 
 /** A large, alternating feature row for one app on the home page. */
@@ -50,6 +51,11 @@ export function ProjectShowcase({ project, index }: { project: Project; index: n
             Case study<span className="sr-only">: {project.name}</span>
             <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover/link:translate-x-0.5" />
           </Link>
+          {project.repoUrl && (
+            <ExternalLink href={project.repoUrl} className="text-sm font-medium hover:underline">
+              Source<span className="sr-only">: {project.name}</span>
+            </ExternalLink>
+          )}
         </div>
       </div>
     </article>

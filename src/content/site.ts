@@ -25,6 +25,8 @@ export const site = {
   supportEmail: "ryannplan.app@gmail.com",
   // TODO: replace with the custom domain once connected (drives metadataBase, canonical URLs, sitemap, robots).
   url: "https://ryannsuite.pages.dev",
+  /** Public source of this site, linked from the footer. */
+  sourceRepo: "https://github.com/BERNARDRYAN/ryannsuite",
   // Regenerate after resume edits: print /resume/ to PDF (A4, no headers) and save over public/resume.pdf.
   resumePdf: "/resume.pdf",
   // TODO: typical support response time.
