@@ -13,7 +13,7 @@ export const site = {
   },
   /** Two or three sentences at the top of the resume. */
   resumeSummary:
-    "Software Engineering graduate from Multimedia University (CGPA 3.75), with a focus on frontend and full-stack web development. As a full-stack developer intern at 7-Eleven Malaysia I built an internal platform from scratch; on my own I design, build and ship RyannSuite, three live web apps.",
+    "Software Engineering graduate from Multimedia University (CGPA 3.75). I enjoy building things people actually use, and I care about the small details that make an app feel easy. I got to work on live systems as a full-stack developer intern at 7-Eleven Malaysia, and in my own time I build RyannSuite: small apps for planning trips, sharing runs and tracking spending.",
   /** Spoken languages, shown on the resume. */
   languages: ["English", "Chinese", "Malay"],
   // Shown as a badge in the hero and on the resume. Set to null to hide.
