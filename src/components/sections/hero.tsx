@@ -16,9 +16,9 @@ const fan = [
 ];
 
 const facts = [
-  { value: `${projects.length} apps`, label: "live in production" },
-  { value: "Solo", label: "designed, built & shipped" },
-  { value: "7-Eleven MY", label: "full-stack developer intern" },
+  { value: `${projects.length} apps`, label: "live — try them" },
+  { value: "Solo", label: "made end to end" },
+  { value: "7-Eleven MY", label: "interned on the dev team, 2026" },
   { value: "MMU '26", label: "B.CS Software Engineering" },
 ];
 
