@@ -13,7 +13,7 @@ export const site = {
   },
   /** Two or three sentences at the top of the resume. */
   resumeSummary:
-    "Final-year Software Engineering student at Multimedia University, graduating November 2026, with a focus on frontend and full-stack web development. As a full-stack developer intern at 7-Eleven Malaysia I built an internal platform from scratch; on my own I design, build and ship RyannSuite, three live web apps.",
+    "Software Engineering student at Multimedia University, completing my degree in November 2026, with a focus on frontend and full-stack web development. As a full-stack developer intern at 7-Eleven Malaysia I built an internal platform from scratch; on my own I design, build and ship RyannSuite, three live web apps.",
   /** Spoken languages, shown on the resume. */
   languages: ["English", "Chinese", "Malay"],
   // Shown as a badge in the hero and on the resume. Set to null to hide.

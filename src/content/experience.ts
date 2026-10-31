@@ -35,8 +35,8 @@ export const education: ExperienceItem[] = [
     org: "Multimedia University (MMU)",
     orgDetail: "Faculty of Computing and Informatics",
     start: "Oct 2023",
-    end: "Nov 2026 (expected)",
-    note: "CGPA 3.75 / 4.00", // TODO: update to the final CGPA once released.
+    end: "Nov 2026",
+    note: "CGPA 3.75 / 4.00 · Convocation Dec 2026",
   },
 ];
 

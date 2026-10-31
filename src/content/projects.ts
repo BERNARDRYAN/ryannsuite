@@ -36,7 +36,7 @@ export const projects: Project[] = [
       { title: "Track expenses", description: "Log who paid, what was shared and how the budget is moving." },
       { title: "Settle payments", description: "Review balances, upload proof and close out the trip." },
     ],
-    stack: ["Vite", "Supabase", "Cloudflare Workers (API)", "Cloudflare Pages", "Google sign-in"],
+    stack: ["Vite", "Supabase", "Cloudflare Workers (API)", "Gemini API", "Cloudflare Pages", "Google sign-in"],
     screenshots: [
       {
         src: "/projects/ryannplan/screenshot-1.webp",

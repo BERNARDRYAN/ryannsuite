@@ -18,7 +18,7 @@ export default function PrivacyPage() {
     <DocPage
       eyebrow={site.brand}
       title="Privacy Policy"
-      lastUpdated="2026-10-30"
+      lastUpdated="2026-10-31"
       intro={
         <p>
           This policy covers every app in the {site.brand} suite ({appNames}). It&apos;s written in plain language: what
@@ -53,8 +53,9 @@ export default function PrivacyPage() {
       <ul>
         <li>
           <strong>RyannPlan</strong> needs an account. Trips, itineraries, expenses and uploaded payment proof are stored
-          in a Supabase database so everyone in your group can see them. AI travel recommendations use the trip details
-          you&apos;ve entered to generate suggestions. {/* TODO: name the AI provider used for recommendations. */}
+          in a Supabase database so everyone in your group can see them. AI travel recommendations are generated with
+          Google Gemini: when you ask for suggestions, the trip details you&apos;ve entered are sent to Google&apos;s Gemini
+          API to produce them.
         </li>
         <li>
           <strong>RyannPace</strong> reads your activity files on your device; they are never uploaded. If you sign in,
